@@ -77,18 +77,21 @@ public class UserEntity {
 	}
 	
 	public UserBean toBean() {
+		System.out.println("in to user bean");
 		UserBean userBean = new UserBean();
 		userBean.setAddress(this.getAddress());
 		userBean.setDateOfBirth(this.getDateOfBirth());
 		userBean.setPhonenumber(this.getPhonenumber());
 		userBean.setUserID(this.getUserID());
 		userBean.setUsername(this.getUsername());
-		if(this.getPoliciesTaken().size() > 0) {
-			List<PolicyTakenBean> list = new ArrayList<>();
-			this.getPoliciesTaken().forEach(p -> {
-				list.add(p.toBean());
-			});
-			userBean.setPoliciesTaken(list);
+		if(this.getPoliciesTaken() != null) {
+			if(this.getPoliciesTaken().size() > 0) {
+				List<PolicyTakenBean> list = new ArrayList<>();
+				this.getPoliciesTaken().forEach(p -> {
+					list.add(p.toBean());
+				});
+				userBean.setPoliciesTaken(list);
+			}
 		}
 		return userBean;
 	}

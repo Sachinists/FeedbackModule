@@ -1,5 +1,8 @@
 package com.example.feedback.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,18 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserBean getUserByUserID(int userID) {
 		return userDAO.getUserByUserID(userID);
+	}
+
+	@Override
+	public UserBean getUserByNameDOB(String name, String dob) {
+		DateTimeFormatter dFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		UserBean userBean = userDAO.getUserByNameDOB(name);
+		if(userBean != null) {
+			if(userBean.getDateOfBirth().isEqual(LocalDate.parse(dob, dFormatter))) {
+				return userBean;
+			}
+		}
+		return null;
 	}
 
 }

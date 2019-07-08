@@ -1,10 +1,12 @@
 package com.example.feedback.dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
@@ -47,6 +49,20 @@ public class UserDAOImpl implements UserDAAO{
 		criteriaQuery.select(root).where(builder.equal(root.get("userID"), userID));
 		UserBean userBean = session.createQuery(criteriaQuery).uniqueResult().toBean();
 		return userBean;
+	}
+
+	@Override
+	public UserBean getUserByNameDOB(String name) {
+		Session session = sessionFactory.openSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<UserEntity> criteriaQuery = builder.createQuery(UserEntity.class);
+		Root<UserEntity> root = criteriaQuery.from(UserEntity.class);
+		criteriaQuery.select(root).where(builder.equal(root.get("username"), name));
+		 UserEntity userBean = session.createQuery(criteriaQuery).uniqueResult(); 
+		 if(userBean != null) {
+			 return userBean.toBean();
+		 }
+		return null;
 	}
 
 }

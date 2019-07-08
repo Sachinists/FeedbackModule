@@ -9,4 +9,6 @@ public interface UserDAAO {
 	public List<UserBean> getAllUsers();
 
 	public UserBean getUserByUserID(int userID);
+
+	public UserBean getUserByNameDOB(String name);
 }

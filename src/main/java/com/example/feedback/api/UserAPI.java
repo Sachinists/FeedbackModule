@@ -36,4 +36,12 @@ public class UserAPI {
 		headers.add("Content-Type","application/json");
 		return new ResponseEntity<UserBean>(userService.getUserByUserID(userID), headers, HttpStatus.OK);
 	}
+	
+	@PostMapping("/getUserByNameDOB")
+	@ResponseBody
+	public ResponseEntity<UserBean> getUserByNameDOB(@RequestParam String name, String dob) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type","application/json");
+		return new ResponseEntity<UserBean>(userService.getUserByNameDOB(name,dob), headers, HttpStatus.OK);
+	}
 }

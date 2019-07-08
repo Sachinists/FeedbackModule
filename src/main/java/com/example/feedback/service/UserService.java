@@ -10,4 +10,5 @@ public interface UserService {
 	public List<UserBean> getAllUsers();
 	public List<PolicyTakenBean> getAllPolicyTakenByUserID(int userID);
 	public UserBean getUserByUserID(int userID);
+	public UserBean getUserByNameDOB(String name, String dob);
 }
