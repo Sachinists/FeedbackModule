@@ -22,4 +22,5 @@ public enum FeedbackType {
             .filter(legNo -> legNo.value == value)
             .findFirst();
     }
+    
 }

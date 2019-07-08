@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.feedback.bean.FeedCount;
 import com.example.feedback.bean.FeedbackBean;
 import com.example.feedback.service.FeedbackService;
-//@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
+//@CrossOrigin(origins = "http://localhost:4200")
 public class FeedbackAPI {
 
 	@Autowired

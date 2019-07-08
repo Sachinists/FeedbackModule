@@ -16,6 +16,10 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import com.example.feedback.entity.FeedbackEntity;
+import com.example.feedback.entity.PolicyEntity;
+import com.example.feedback.entity.PolicyTakenEntity;
+import com.example.feedback.entity.TransactionEntity;
+import com.example.feedback.entity.UserEntity;
 
 @SpringBootApplication
 @PropertySource(value = { "classpath:application.properties" })
@@ -34,6 +38,10 @@ public class FeedbackApplication {
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setPackagesToScan(new String[] { "com.example.feedback.entity" });
 		sessionFactory.setAnnotatedClasses(FeedbackEntity.class);
+		sessionFactory.setAnnotatedClasses(PolicyEntity.class);
+		sessionFactory.setAnnotatedClasses(PolicyTakenEntity.class);
+		sessionFactory.setAnnotatedClasses(UserEntity.class);
+		sessionFactory.setAnnotatedClasses(TransactionEntity.class);
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
